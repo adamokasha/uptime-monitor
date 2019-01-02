@@ -4,15 +4,11 @@ const http = require("http");
 const https = require("https");
 const url = require("url");
 const StringDecoder = require("string_decoder").StringDecoder;
-const config = require("./config");
+const config = require("./config/config");
 const fs = require("fs");
 const _data = require("./lib/data");
-
-// Testing
-// @TODO delete this
-_data.delete("test", "newFile", err => {
-  console.log("Error: ", err);
-});
+const handlers = require("./lib/handlers");
+const helpers = require("./lib/helpers");
 
 // Instatiate the http server
 const httpServer = http.createServer((req, res) => {
@@ -76,13 +72,14 @@ const unifiedServer = (req, res) => {
       queryStringObject,
       method,
       headers,
-      payload: buffer
+      payload: helpers.parseJsonToObject(buffer)
     };
 
     // Route the request to the handler specified in the router
     chosenHandler(data, (statusCode = 200, payload = {}) => {
       // Convert payload to string
       const payloadString = JSON.stringify(payload);
+      console.log("payloadString ", payloadString);
 
       // Return response
       res.setHeader("Content-Type", "application/json");
@@ -94,17 +91,8 @@ const unifiedServer = (req, res) => {
   });
 };
 
-// Define handlers
-const handlers = {
-  ping: (data, callback) => {
-    callback(200);
-  },
-  notFound: (data, callback) => {
-    callback(404);
-  }
-};
-
 // Define a request router
 const router = {
-  ping: handlers.ping
+  ping: handlers.ping,
+  users: handlers.users
 };
