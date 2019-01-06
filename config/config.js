@@ -10,14 +10,24 @@ const environments = {
     httpsPort: 3001,
     envName: "staging",
     hashingSecret: devKeys.hashingSecret,
-    maxChecks: 5
+    maxChecks: 5,
+    twilio: {
+      accountSid: devKeys.accountSid,
+      authToken: devKeys.authToken,
+      fromPhone: devKeys.fromPhone
+    }
   },
   production: {
     httpPort: 5000,
     httpsPort: 5001,
     envName: "production",
     hashingSecret: prodKeys.hashingSecret,
-    maxChecks: 5
+    maxChecks: 5,
+    twilio: {
+      accountSid: prodKeys.accountSid,
+      authToken: prodKeys.authToken,
+      fromPhone: prodKeys.fromPhone
+    }
   }
 };
 

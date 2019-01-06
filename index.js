@@ -6,9 +6,13 @@ const url = require("url");
 const StringDecoder = require("string_decoder").StringDecoder;
 const config = require("./config/config");
 const fs = require("fs");
-const _data = require("./lib/data");
 const handlers = require("./lib/handlers");
 const helpers = require("./lib/helpers");
+
+// @TODO remove this
+helpers.sendTwilioSms("6472242454", "Hello", err => {
+  console.log(err);
+});
 
 // Instatiate the http server
 const httpServer = http.createServer((req, res) => {
