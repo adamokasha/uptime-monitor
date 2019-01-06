@@ -41,7 +41,7 @@ const unifiedServer = (req, res) => {
 
   // Get path from url
   const path = parsedUrl.pathname;
-  const trimmedPath = path.replace(/^\/+|\/+$/g, "");
+  const trimmedPath = path.replace(/^\/+|\/+$/g, ""); // removes leading slash
 
   // Get the query string as object
   const queryStringObject = parsedUrl.query;
@@ -95,5 +95,6 @@ const unifiedServer = (req, res) => {
 const router = {
   ping: handlers.ping,
   users: handlers.users,
-  tokens: handlers.tokens
+  tokens: handlers.tokens,
+  checks: handlers.checks
 };
