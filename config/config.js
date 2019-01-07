@@ -15,6 +15,12 @@ const environments = {
       accountSid: devKeys.accountSid,
       authToken: devKeys.authToken,
       fromPhone: devKeys.fromPhone
+    },
+    templateGlobals: {
+      appName: "Uptime Checker",
+      companyName: "NotARealCompany, Inc",
+      yearCreated: "2018",
+      baseUrl: "http://localhost:3000/"
     }
   },
   production: {
@@ -27,6 +33,12 @@ const environments = {
       accountSid: prodKeys.accountSid,
       authToken: prodKeys.authToken,
       fromPhone: prodKeys.fromPhone
+    },
+    templateGlobals: {
+      appName: "Uptime Checker",
+      companyName: "NotARealCompany, Inc",
+      yearCreated: "2018",
+      baseUrl: "http://localhost:5000/"
     }
   }
 };
